@@ -1,11 +1,11 @@
 {
-  "name": "keylight-commander",
+  "name": "keylight-commander-linux",
   "description": "Cross-platform application for controlling Elgato Key Lights.",
   "author": {
     "name": "David Chalifoux"
   },
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,8 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "add": "pnpm dlx shadcn@latest add",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test": "tsc src/lib/coalescer.ts --outDir .test-build --target ES2022 --module ES2022 --skipLibCheck && node --test tests/*.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.0",
@@ -24,15 +25,7 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@tailwindcss/vite": "^4.0.6",
-    "@tanstack/react-query": "^5.66.0",
-    "@tanstack/react-router": "^1.102.1",
     "@tauri-apps/api": "^2.3.0",
-    "@tauri-apps/plugin-http": "~2.3.0",
-    "@tauri-apps/plugin-opener": "^2.2.6",
-    "@tauri-apps/plugin-os": "~2.2.0",
-    "@tauri-apps/plugin-updater": "~2.5.1",
-    "@uidotdev/usehooks": "^2.4.1",
-    "ahooks": "^3.8.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
@@ -42,13 +35,10 @@
     "tailwind-merge": "^3.0.1",
     "tailwindcss": "^4.0.6",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.2",
-    "zustand": "^5.0.3"
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@tanstack/router-devtools": "^1.102.1",
-    "@tanstack/router-plugin": "^1.102.2",
     "@tauri-apps/cli": "^2.3.1",
     "@types/node": "^22.13.1",
     "@types/react": "^18.3.1",

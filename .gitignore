@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local build toolchain and package output
+.build-tools/
+artifacts/
+.test-build/
+__pycache__/

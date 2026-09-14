@@ -1,20 +1,10 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Keylight Commander",
-  "mainBinaryName": "keylight-commander",
-  "version": "0.1.1",
-  "identifier": "dev.chalifoux.keylight-commander",
-  "plugins": {
-    "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEUxQUJDNEM4RkRBNUNFNDkKUldSSnpxWDl5TVNyNGUvQXZ1NzJsMDlPSEc5ckQ2OFk3dFJKdUhMMXRYWDF6anlzNkRpbk5hWjQK",
-      "endpoints": [
-        "https://github.com/davidchalifoux/keylight-commander/releases/latest/download/latest.json"
-      ],
-      "windows": {
-        "installMode": "passive"
-      }
-    }
-  },
+  "productName": "Keylight Commander Linux",
+  "mainBinaryName": "keylight-commander-linux",
+  "version": "0.2.3",
+  "identifier": "io.github.keylight-commander-linux",
+  "plugins": {},
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -26,14 +16,15 @@
     "windows": [
       {
         "label": "main",
-        "title": "Keylight Commander",
+        "title": "Keylight Commander Linux",
         "hiddenTitle": true,
         "width": 400,
         "minWidth": 400,
         "height": 400,
         "minHeight": 300,
         "center": true,
-        "skipTaskbar": false
+        "skipTaskbar": false,
+        "visible": false
       }
     ],
     "security": {
@@ -42,23 +33,32 @@
   },
   "bundle": {
     "active": true,
-    "createUpdaterArtifacts": true,
+    "createUpdaterArtifacts": false,
     "resources": [
       "icons/*"
     ],
     "license": "MIT",
     "homepage": "https://github.com/davidchalifoux/keylight-commander",
-    "shortDescription": "Cross-platform application for controlling Elgato Key Lights.",
-    "longDescription": "Keylight Commander is an open-source and cross-platform application for controlling Elgato Key Lights.",
-    "publisher": "David Chalifoux",
+    "shortDescription": "Elgato Key Light control from your Linux panel",
+    "longDescription": "Linux-first fork of Keylight Commander with native panel light controls and a shared background device controller. Based on the MIT-licensed original by David Chalifoux.",
+    "publisher": "Keylight Commander Linux contributors",
     "category": "Utility",
-    "targets": "all",
+    "targets": [
+      "deb"
+    ],
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "linux": {
+      "deb": {
+        "depends": [
+          "libglib2.0-bin"
+        ]
+      }
+    }
   }
 }
