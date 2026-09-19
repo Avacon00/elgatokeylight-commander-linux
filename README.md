@@ -3,7 +3,7 @@
   <h1>Keylight Commander Linux</h1>
   <p><strong>Your lights. One panel menu.</strong></p>
   <p>Local control for Elgato Key Lights, built around the Linux desktop.</p>
-  <p><strong>v0.2.3</strong> · Pop!_OS / COSMIC · DE / EN · MIT</p>
+  <p><strong>v0.2.4</strong> · Pop!_OS / COSMIC · DE / EN · MIT</p>
   <p>
     <a href="#get-started">Get started</a> ·
     <a href="#panel-controls">Panel controls</a> ·
@@ -37,7 +37,7 @@ Designed for **Pop!_OS 24.04 with COSMIC / Wayland**, with a native Linux menu a
 Build an **amd64 DEB** using the [development guide](docs/DEVELOPMENT.md), or obtain a package from a completed manual [GitHub Actions build](https://github.com/Avacon00/elgatokeylight-commander-linux/actions/workflows/test-on-pr.yml). Generated packages are not stored in this repository; there is no published release download yet.
 
 ```sh
-sudo apt install "./Keylight Commander Linux_0.2.3_amd64.deb"
+sudo apt install "./Keylight Commander Linux_0.2.4_amd64.deb"
 ```
 
 Use the actual filename if your package was renamed. The package targets Pop!_OS / Ubuntu 24.04.
@@ -95,6 +95,7 @@ Device configurations, local build tools and generated packages are excluded fro
 
 | Version | Changes |
 | :--- | :--- |
+| **0.2.4** | Brightness and temperature presets are directly selectable in COSMIC instead of using an unstable third menu level |
 | **0.2.3** | Long names keep navigation accessible; failed saves restore autostart changes and preserve removed devices |
 | **0.2.2** | Readable dark language selector under native GTK themes |
 | **0.2.1** | Shared German / English translations, saved language preference and compact panel menus |
@@ -102,7 +103,7 @@ Device configurations, local build tools and generated packages are excluded fro
 
 ## Development & verification
 
-**18 Rust tests + 6 frontend / translation tests passed for 0.2.3**, alongside browser integration, Clippy and the release DEB build. These are recorded local results, not a live CI status badge.
+**18 Rust tests + 6 frontend / translation tests passed for 0.2.4**, alongside native German and English COSMIC menu tests, Clippy and the release DEB build. These are recorded local results, not a live CI status badge.
 
 - [Build, test and architecture guide](docs/DEVELOPMENT.md)
 - [Verification results and known limitations](TESTING.md)

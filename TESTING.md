@@ -1,4 +1,12 @@
-# Verification — 0.2.3
+# Verification — 0.2.4
+
+- Native COSMIC menu tests passed in German and English with isolated loopback fixtures. Brightness and temperature presets are direct children of the lamp menu, preventing COSMIC from collapsing the active lamp when a third-level submenu is opened.
+- Individual 75% brightness and 3000 K actions reached only the selected fixture; offline controls, window-sync isolation, second-instance handling and clean Quit remain verified. Group writes were skipped because physical lights were discovered and remain covered by Rust simulations.
+- 18 Rust tests and 6 frontend/translation tests passed. TypeScript, production frontend build, Rust formatting and Clippy with warnings denied passed.
+- The production amd64 DEB built successfully. APT simulated upgrading the installed 0.2.3 to 0.2.4: one upgrade, no new packages or removals.
+- The running installed application and physical lights were not modified. Native tests used a separate application identifier and configuration directory.
+
+## Previous verification — 0.2.3
 
 - 18 Rust tests and 6 frontend/translation tests passed. New cases inject write failures to verify OS autostart rollback, rollback-error reporting, device retention in memory/on disk and successful removal after retry.
 - Browser integration passed, including a 113-character lamp name in the 400px detail window: Back, Scan and Settings remain inside the viewport. Screenshot inspected: `artifacts/details-long-name.png`.

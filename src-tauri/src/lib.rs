@@ -104,10 +104,20 @@ fn presets(
         menu.append(&MenuItem::with_id(app, &key, title, enabled, None::<&str>)?)?;
         actions.insert(key, (id.clone(), patch));
     }
-    let brightness = Submenu::new(app, text(locale, "brightness"), enabled)?;
+    // COSMIC's DBusMenu renderer currently loses the active lamp submenu when
+    // opening a submenu inside it. Keep presets one level deep so every value
+    // remains directly selectable from both device and group menus.
+    menu.append(&PredefinedMenuItem::separator(app)?)?;
+    menu.append(&MenuItem::with_id(
+        app,
+        format!("{prefix}-brightness-heading"),
+        text(locale, "brightness"),
+        false,
+        None::<&str>,
+    )?)?;
     for value in [10, 25, 50, 75, 100] {
         let key = format!("{prefix}-b{value}");
-        brightness.append(&MenuItem::with_id(
+        menu.append(&MenuItem::with_id(
             app,
             &key,
             format!("{value}%"),
@@ -125,10 +135,17 @@ fn presets(
             ),
         );
     }
-    let temperature = Submenu::new(app, text(locale, "temperature"), enabled)?;
+    menu.append(&PredefinedMenuItem::separator(app)?)?;
+    menu.append(&MenuItem::with_id(
+        app,
+        format!("{prefix}-temperature-heading"),
+        text(locale, "temperature"),
+        false,
+        None::<&str>,
+    )?)?;
     for kelvin in [3000, 4000, 5000, 6500] {
         let key = format!("{prefix}-t{kelvin}");
-        temperature.append(&MenuItem::with_id(
+        menu.append(&MenuItem::with_id(
             app,
             &key,
             format!("{kelvin} K"),
@@ -146,8 +163,6 @@ fn presets(
             ),
         );
     }
-    menu.append(&brightness)?;
-    menu.append(&temperature)?;
     Ok(())
 }
 async fn publish(app: &tauri::AppHandle, runtime: &Runtime) {

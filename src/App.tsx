@@ -262,7 +262,7 @@ export default function App() {
 						</label>
 						<p className="text-neutral-400">{tr("close_help")}</p>
 						<p className="text-neutral-500">
-							{tr("version", { version: "0.2.3" })}
+							{tr("version", { version: "0.2.4" })}
 						</p>
 					</section>
 				)}

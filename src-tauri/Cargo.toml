@@ -1,6 +1,6 @@
 [package]
 name = "keylight-commander"
-version = "0.2.3"
+version = "0.2.4"
 description = "Cross-platform application for controlling Elgato Key Lights."
 authors = ["Keylight Commander Linux contributors", "David Chalifoux (original author)"]
 edition = "2021"

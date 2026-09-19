@@ -63,15 +63,17 @@ with tempfile.TemporaryDirectory(prefix='keylight-native-') as temp:
   wait_for(lambda:find('Fixture A · '+tr('off')))
   def event(ident):call(dest,menu_path,'com.canonical.dbusmenu','Event',GLib.Variant('(isvu)',(ident,'clicked',GLib.Variant('s',''),0)))
   def light_sub(name):return next(child for child in tree()[2] if name in child[1].get('label',''))
+  def direct_find(label,node):return next(((i,p) for i,p,children in node[2] if label==p.get('label','')),None)
   assert light_sub('Fixture A')[1]['label']=='Fixture A · '+tr('off')
+  assert all(not children for _,_,children in light_sub('Fixture A')[2]),'COSMIC presets must not use third-level submenus'
   status=find(tr('brightness')+':',light_sub('Fixture A'))
   assert status and not status[1].get('enabled',True) and '5000 K' in status[1]['label']
   event(find(tr('turn_on'),light_sub('Fixture A'))[0]);wait_for(lambda:a[1]['on']==1)
   assert b[1]['on']==0,'Individual panel action must ignore window sync'
   wait_for(lambda:find('Fixture A · '+tr('on')))
-  event(find('75%',light_sub('Fixture A'))[0]);wait_for(lambda:a[1]['brightness']==75)
+  event(direct_find('75%',light_sub('Fixture A'))[0]);wait_for(lambda:a[1]['brightness']==75)
   assert a[1]['temperature']==200 and a[1]['on']==1
-  event(find('3000 K',light_sub('Fixture B'))[0]);wait_for(lambda:b[1]['temperature']==333)
+  event(direct_find('3000 K',light_sub('Fixture B'))[0]);wait_for(lambda:b[1]['temperature']==333)
   assert b[1]['brightness']==35 and b[1]['on']==0
   # Group actions are safe only while every registered device is a fixture.
   wait_for(lambda:find(tr('scan')) and find(tr('scan'))[1].get('enabled',True))
@@ -94,7 +96,7 @@ with tempfile.TemporaryDirectory(prefix='keylight-native-') as temp:
   assert len(registered()-baseline)==1,'Second launch must not duplicate the icon'
   event(find(tr('quit'))[0]);assert process.wait(timeout=10)==0
   wait_for(lambda:not (registered()-baseline))
-  print(language+': PASS: icon registration, menu/submenus, individual presets, offline state/disabled controls, window-sync isolation, Open/Settings dispatch, single instance, Quit/unregister')
+  print(language+': PASS: icon registration, flat COSMIC presets, individual targeting, offline state/disabled controls, window-sync isolation, Open/Settings dispatch, single instance, Quit/unregister')
   print('Groups: '+('PASS' if groups_tested else 'skipped in native test (physical lights discovered); covered by Rust simulations'))
  finally:
   if process.poll() is None:process.terminate();process.wait(timeout=10)
