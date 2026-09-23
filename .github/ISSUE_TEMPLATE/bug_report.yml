@@ -1,0 +1,91 @@
+name: Bug report / Fehlerbericht
+description: Report a problem or an untested Linux compatibility result
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Keylight Commander Linux. Reports in English or German are welcome.
+        Danke fürs Testen. Fehlerberichte auf Deutsch oder Englisch sind willkommen.
+  - type: input
+    id: version
+    attributes:
+      label: App version / App-Version
+      placeholder: "0.2.4"
+    validations:
+      required: true
+  - type: dropdown
+    id: installation
+    attributes:
+      label: Installation method / Installationsart
+      options:
+        - GitHub release DEB
+        - Locally built DEB
+        - Run from source
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Linux distribution and version
+      description: Linux-Distribution und Version
+      placeholder: "Pop!_OS 24.04"
+    validations:
+      required: true
+  - type: input
+    id: desktop
+    attributes:
+      label: Desktop and session
+      description: Desktopumgebung und Wayland/X11-Sitzung
+      placeholder: "COSMIC, Wayland"
+    validations:
+      required: true
+  - type: input
+    id: lights
+    attributes:
+      label: Key Light model and firmware
+      description: Lampenmodell und Firmware, falls bekannt
+      placeholder: "Elgato Key Light MK.2"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened? / Was ist passiert?
+      description: Describe the actual behavior and any visible error.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce / Schritte zum Nachstellen
+      placeholder: |
+        1. Open ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior / Erwartetes Verhalten
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots / Logs oder Screenshots
+      description: Remove passwords, tokens, serial numbers, MAC addresses and private network addresses first.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues / Ich habe bestehende Issues durchsucht.
+          required: true
+        - label: I removed private device and network data / Private Geräte- und Netzwerkdaten wurden entfernt.
+          required: true

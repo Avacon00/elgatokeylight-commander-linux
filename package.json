@@ -1,11 +1,29 @@
 {
   "name": "keylight-commander-linux",
-  "description": "Cross-platform application for controlling Elgato Key Lights.",
+  "description": "Control Elgato Key Lights from the Linux system tray on Ubuntu, Pop!_OS, COSMIC and Wayland.",
   "author": {
     "name": "David Chalifoux"
   },
   "private": true,
   "version": "0.2.4",
+  "homepage": "https://github.com/Avacon00/elgatokeylight-commander-linux",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Avacon00/elgatokeylight-commander-linux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Avacon00/elgatokeylight-commander-linux/issues"
+  },
+  "keywords": [
+    "elgato",
+    "key-light",
+    "linux",
+    "system-tray",
+    "pop-os",
+    "cosmic-desktop",
+    "wayland",
+    "tauri"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",

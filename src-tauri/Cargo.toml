@@ -1,11 +1,12 @@
 [package]
 name = "keylight-commander"
 version = "0.2.4"
-description = "Cross-platform application for controlling Elgato Key Lights."
+description = "Control Elgato Key Lights from the Linux system tray."
 authors = ["Keylight Commander Linux contributors", "David Chalifoux (original author)"]
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/davidchalifoux/keylight-commander"
+repository = "https://github.com/Avacon00/elgatokeylight-commander-linux"
+homepage = "https://github.com/Avacon00/elgatokeylight-commander-linux"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
